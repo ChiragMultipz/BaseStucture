@@ -19,12 +19,12 @@ class ApiProvider{
       if(body==null){
         response = await http.patch(Uri.parse(Constants.baseUrl + url), headers: {
           HttpHeaders.contentTypeHeader: "application/json",
-          "Authorization": "Bearer " + token,
+          "Authorization": "Bearer " + token!,
         });
       }else{
         response = await http.patch(Uri.parse(Constants.baseUrl + url), headers: {
           HttpHeaders.contentTypeHeader: "application/json",
-          "Authorization": "Bearer " + token,
+          "Authorization": "Bearer " + token!,
         },body: json.encode(body));
       }
 
@@ -44,7 +44,7 @@ class ApiProvider{
       print(token);
       final response = await http.get(Uri.parse(Constants.baseUrl + url), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        "Authorization": "Bearer " + token,
+        "Authorization": "Bearer " + token!,
         });
       responseJson = _response(response);
     } on SocketException {
@@ -60,7 +60,7 @@ class ApiProvider{
       print(token);
       final response = await http.delete(Uri.parse(Constants.baseUrl + url), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        "Authorization": "Bearer " + token,
+        "Authorization": "Bearer " + token!,
       });
       responseJson = _response(response);
     } on SocketException {
@@ -96,13 +96,13 @@ class ApiProvider{
         response = await http.put(Uri.parse(Constants.baseUrl + url),
             headers: {
               HttpHeaders.contentTypeHeader: "application/json",
-              "Authorization": "Bearer " + token,
+              "Authorization": "Bearer " + token!,
             });
       }else{
         response = await http.put(Uri.parse(Constants.baseUrl + url),
             headers: {
               HttpHeaders.contentTypeHeader: "application/json",
-              "Authorization": "Bearer " + token,
+              "Authorization": "Bearer " + token!,
             },
             body: json.encode(body));
       }
@@ -123,7 +123,7 @@ class ApiProvider{
       final response = await http.post(Uri.parse(Constants.baseUrl + url),
           headers: {
             HttpHeaders.contentTypeHeader: "application/json",
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token!
           },
           body: body);
       print(response.request);
@@ -140,7 +140,7 @@ class ApiProvider{
     var responseJson;
     try {
       var token = await getAuthToken();
-      Map<String, String> headers = {"Authorization": "Bearer " + token};
+      Map<String, String> headers = {"Authorization": "Bearer " + token!};
       var request = http.MultipartRequest(
           'POST',
           Uri.parse(

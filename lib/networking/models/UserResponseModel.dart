@@ -28,31 +28,31 @@ class UserResponseModel {
     this.updatedDate
   });
 
-  String userId;
-  int roleId;
-  String firstName;
-  String middleName;
-  String lastName;
-  String email;
-  String phoneNo;
-  String profilePic;
-  String storeId;
-  String timezone;
-  int status;
-  bool isDeleted;
-  bool isVerified;
-  String zipCode;
-  String gender;
-  String countryCode;
-  String title;
-  String preferredLanguage;
-  String preferredCurrency;
-  String registerVia;
-  String dob;
-  String createdBy;
-  String updatedBy;
-  DateTime createdDate;
-  DateTime updatedDate;
+  String? userId;
+  int? roleId;
+  String? firstName;
+  String? middleName;
+  String? lastName;
+  String? email;
+  String? phoneNo;
+  String? profilePic;
+  String? storeId;
+  String? timezone;
+  int? status;
+  bool? isDeleted;
+  bool? isVerified;
+  String? zipCode;
+  String? gender;
+  String? countryCode;
+  String? title;
+  String? preferredLanguage;
+  String? preferredCurrency;
+  String? registerVia;
+  String? dob;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdDate;
+  DateTime? updatedDate;
 
   factory UserResponseModel.fromJson(Map<String, dynamic> json) => UserResponseModel(
     userId: json["userId"] == null ? null : json["userId"],
@@ -106,18 +106,18 @@ class UserResponseModel {
     "dob": dob,
     "createdBy": createdBy,
     "updatedBy": updatedBy,
-    "createdDate": createdDate.toIso8601String(),
-    "updatedDate": updatedDate.toIso8601String(),
+    "createdDate": createdDate!.toIso8601String(),
+    "updatedDate": updatedDate!.toIso8601String(),
   };
 }
 
 class CreateUserRequest {
-  String first_name;
-  String last_name;
-  String email;
-  int user_type; //send 2 for reseller, 3 for normal user
-  String confirm_password;
-  String password;
+  String? first_name;
+  String? last_name;
+  String? email;
+  int? user_type; //send 2 for reseller, 3 for normal user
+  String? confirm_password;
+  String? password;
 
   CreateUserRequest(
       {this.first_name,
@@ -150,9 +150,9 @@ class CreateUserRequest {
 
 
 class UpdateUserRequest {
-  String first_name = "";
-  String last_name = "";
-  String email = "";
+  String? first_name = "";
+  String? last_name = "";
+  String? email = "";
 
   UpdateUserRequest(
       {this.first_name,

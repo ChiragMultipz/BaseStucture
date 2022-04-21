@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 const primaryColor = Color(0xFF2697FF);
 const secondaryColor = Color(0xFF2A2D3E);
 const bgColor = Color(0xFF212332);
-
 const defaultPadding = 16.0;
 
-// var baseUrl = "http://35.183.182.55:3000";
-var baseUrl = "https://api.dashbeautyshop.com";//"http://35.183.182.55:3000"; //'https://337a6c0d7f46.ngrok.io';
-//    android:usesCleartextTraffic="true"
+var baseUrl = "https://your app url";
 const String AUTHTOKEN = "auth_token";
-
 const String NO_INTERNET = "No Internet";
 
-//api end points
+///api end points
 const String SING_IN = "/v1/auth/backend-signin";//Admin login
 
 //user
@@ -24,7 +19,6 @@ const String GET_USER_BY_ID = "/v1/user/{id}"; //Create new user by admin
 const String DELETE_USER_BY_ID = "/v1/user/"; //Delete user by admin
 const String ACTIVE_DEACTIVE_USER = "/v1/user/active-deactive-user/"; //Enable disable user by admin
 const String UPDATE_USER = "/v1/user/"; //Enable disable user by admin
-
 
 
 // Form Error

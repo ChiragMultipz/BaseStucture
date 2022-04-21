@@ -6,10 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:base_flutter/utils/constants.dart' as Constants;
 
 class LoginBloc {
-  LoginRepository _loginRepository;
-  StreamController _loginBlocController;
+  LoginRepository? _loginRepository;
+  StreamController? _loginBlocController;
 
-  StreamSink<Response<LoginResponseModel>> get loginDataSink =>
+  StreamSink<Response<LoginResponseModel>>? get loginDataSink =>
       _loginBlocController.sink;
 
   Stream<Response<LoginResponseModel>> get loginStream =>
@@ -24,19 +24,19 @@ class LoginBloc {
 
 
   loginUser(LoginRequest loginRequest) async {
-    loginDataSink.add(Response.loading('login'));
+    loginDataSink!.add(Response.loading('login'));
     try {
       LoginResponseModel loginData =
-          await _loginRepository.loginAdmin(loginRequest);
+          await _loginRepository!.loginAdmin(loginRequest);
       print(loginData);
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString(Constants.AUTHTOKEN, loginData.token);
+      prefs.setString(Constants.AUTHTOKEN, loginData.result!.token!);
 
       isLoggedIn = true;
-      loginDataSink.add(Response.completed(loginData));
+      loginDataSink!.add(Response.completed(loginData));
     } catch (e) {
-      loginDataSink.add(Response.error(e.toString()));
+      loginDataSink!.add(Response.error(e.toString()));
       isLoggedIn = false;
       print(e);
     }
@@ -44,6 +44,6 @@ class LoginBloc {
   }
 
   dispose() {
-    _loginBlocController.close();
+    _loginBlocController!.close();
   }
 }

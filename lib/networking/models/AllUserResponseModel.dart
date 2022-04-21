@@ -4,11 +4,9 @@
 
 import 'dart:convert';
 
-AllUserResponseModel allUserResponseModelFromJson(String str) =>
-    AllUserResponseModel.fromJson(json.decode(str));
+AllUserResponseModel allUserResponseModelFromJson(String str) => AllUserResponseModel.fromJson(json.decode(str));
 
-String allUserResponseModelToJson(AllUserResponseModel data) =>
-    json.encode(data.toJson());
+String allUserResponseModelToJson(AllUserResponseModel data) => json.encode(data.toJson());
 
 class AllUserResponseModel {
   AllUserResponseModel({
@@ -16,20 +14,16 @@ class AllUserResponseModel {
     this.totalReseult,
   });
 
-  List<UserResponseData> data;
-  int totalReseult;
+  List<UserResponseData>? data;
+  int? totalReseult;
 
-  factory AllUserResponseModel.fromJson(Map<String, dynamic> json) =>
-      AllUserResponseModel(
-        data: json["data"] == null
-            ? null
-            : List<UserResponseData>.from(json["data"].map((x) => UserResponseData.fromJson(x))),
-        totalReseult:
-            json["TotalReseult"] == null ? null : json["TotalReseult"],
+  factory AllUserResponseModel.fromJson(Map<String, dynamic> json) => AllUserResponseModel(
+        data: json["data"] == null ? null : List<UserResponseData>.from(json["data"].map((x) => UserResponseData.fromJson(x))),
+        totalReseult: json["TotalReseult"] == null ? null : json["TotalReseult"],
       );
 
   Map<String, dynamic> toJson() => {
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
         "TotalReseult": totalReseult,
       };
 }
@@ -62,31 +56,31 @@ class UserResponseData {
       this.createdDate,
       this.updatedDate});
 
-  String userId;
-  int roleId;
-  String firstName;
-  String middleName;
-  String lastName;
-  String email;
-  String phoneNo;
-  String profilePic;
-  String storeId;
-  String timezone;
-  int status;
-  bool isDeleted;
-  bool isVerified;
-  String zipCode;
-  String gender;
-  String countryCode;
-  String title;
-  String preferredLanguage;
-  String preferredCurrency;
-  String registerVia;
-  String dob;
-  String createdBy;
-  String updatedBy;
-  DateTime createdDate;
-  DateTime updatedDate;
+  String? userId;
+  int? roleId;
+  String? firstName;
+  String? middleName;
+  String? lastName;
+  String? email;
+  String? phoneNo;
+  String? profilePic;
+  String? storeId;
+  String? timezone;
+  int? status;
+  bool? isDeleted;
+  bool? isVerified;
+  String? zipCode;
+  String? gender;
+  String? countryCode;
+  String? title;
+  String? preferredLanguage;
+  String? preferredCurrency;
+  String? registerVia;
+  String? dob;
+  String? createdBy;
+  String? updatedBy;
+  DateTime? createdDate;
+  DateTime? updatedDate;
 
   factory UserResponseData.fromJson(Map<String, dynamic> json) => UserResponseData(
         userId: json["userId"] == null ? null : json["userId"],
@@ -106,22 +100,14 @@ class UserResponseData {
         gender: json["gender"] == null ? null : json["gender"],
         countryCode: json["countryCode"] == null ? null : json["countryCode"],
         title: json["title"] == null ? null : json["title"],
-        preferredLanguage: json["preferredLanguage"] == null
-            ? null
-            : json["preferredLanguage"],
-        preferredCurrency: json["preferredCurrency"] == null
-            ? null
-            : json["preferredCurrency"],
+        preferredLanguage: json["preferredLanguage"] == null ? null : json["preferredLanguage"],
+        preferredCurrency: json["preferredCurrency"] == null ? null : json["preferredCurrency"],
         registerVia: json["registerVia"] == null ? null : json["registerVia"],
         dob: json["dob"] == null ? null : json["dob"],
         createdBy: json["createdBy"] == null ? null : json["createdBy"],
         updatedBy: json["updatedBy"] == null ? null : json["updatedBy"],
-        createdDate: json["createdDate"] == null
-            ? null
-            : DateTime.parse(json["createdDate"]),
-        updatedDate: json["updatedDate"] == null
-            ? null
-            : DateTime.parse(json["updatedDate"]),
+        createdDate: json["createdDate"] == null ? null : DateTime.parse(json["createdDate"]),
+        updatedDate: json["updatedDate"] == null ? null : DateTime.parse(json["updatedDate"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -148,16 +134,16 @@ class UserResponseData {
         "dob": dob,
         "createdBy": createdBy,
         "updatedBy": updatedBy,
-        "createdDate": createdDate.toIso8601String(),
-        "updatedDate": updatedDate.toIso8601String(),
+        "createdDate": createdDate!.toIso8601String(),
+        "updatedDate": updatedDate!.toIso8601String(),
       };
 }
 
 class UserRequest {
-  String limit = "10";
-  String page_no = "1";
-  String search = "";
-  String userRole = "3"; //send 2 for reseller, 3 for normal user
+  String? limit = "10";
+  String? page_no = "1";
+  String? search = "";
+  String? userRole = "3"; //send 2 for reseller, 3 for normal user
 
   UserRequest({this.limit, this.page_no, this.search, this.userRole});
 
@@ -177,5 +163,3 @@ class UserRequest {
     return data;
   }
 }
-
-
